@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "yarn run rollup -c",
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "test": "yarn run jest"
   },
   "license": "MIT",
@@ -33,6 +33,8 @@
     "@types/qs": "^6.9.4",
     "@vue-storefront/core": "^2.0.12",
     "jest": "^26.6.3",
+    "release-it": "^14.2.1",
+    "release-it-lerna-changelog": "^3.1.0",
     "rollup": "^2.33.2",
     "rollup-plugin-typescript2": "^0.29.0",
     "ts-jest": "^26.4.4",
@@ -41,5 +43,24 @@
   },
   "peerDependencies": {
     "@vue-storefront/core": "^2.0.10"
+  },
+  "files": [
+    "dist/**/*",
+    "nuxt/**/*"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    },
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": true
+      }
+    }
   }
 }
