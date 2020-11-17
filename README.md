@@ -7,7 +7,7 @@
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#example">Example</a> •
+  <a href="#full-example">Full Example</a> •
   <a href="#license">License</a>
 </p>
 
