@@ -11,6 +11,16 @@
   <a href="#license">License</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/LexasCMS/vsf-next-lexascms/actions">
+    <img src="https://github.com/LexasCMS/vsf-next-lexascms/workflows/CI/badge.svg" alt="CI Build Status" />
+  </a>
+
+  <a href="https://badge.fury.io/js/vsf-lexascms">
+    <img src="https://badge.fury.io/js/vsf-lexascms.svg" alt="NPM Package Version" />
+  </a>
+</p>
+
 <br /><br />
 
 
