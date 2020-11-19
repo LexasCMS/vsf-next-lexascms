@@ -5,7 +5,7 @@ import Jsona from 'jsona';
 import * as qs from 'qs';
 
 import { LexascmsContent, LexascmsContextSearchParams } from '../../types/lexascms/index';
-import { getConfig, getRequestContext } from '../../index';
+import { getConfig } from '../../index';
 
 export const useContent = useContentFactory<LexascmsContent, LexascmsContextSearchParams>({
   
@@ -28,12 +28,10 @@ export const useContent = useContentFactory<LexascmsContent, LexascmsContextSear
       params: args.params,
       paramsSerializer: /* istanbul ignore next */ (params: any) => qs.stringify(params)
     };
-    // Get request context
-    const requestContext = args.context !== undefined ? args.context : getRequestContext();
     // Add LexasCMS Request Context if required
-    if (requestContext !== null) {
+    if (args.context !== undefined) {
       requestOptions.headers['x-lexascms-context'] = base64.encode(
-        JSON.stringify(requestContext)
+        JSON.stringify(args.context)
       );
     }
     // Send request
