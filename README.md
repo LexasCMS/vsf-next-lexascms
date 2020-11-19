@@ -238,25 +238,27 @@ As suggested in the code snippet above, you can also pass some additional parame
 
 ### Request Context
 
-In the event that you would like to set a request context on your requests to LexasCMS (i.e. for content personalisation), you can set a global request context by using the `vsf-lexascms` modules `setRequestContext` method.
+In the event that you would like to set a request context on your requests to LexasCMS (i.e. for content personalisation), you can provide a request context by passing the `context` property to the `search` function.
 
-You can call this method from anywhere, and doing so will automatically attach the provided context to all subsequent requests made to LexasCMS.
-
-**Note:** You can also retrieve the current request context using the `vsf-lexascms` modules `getRequestContext` method.
-
-The following snippet shows an example of setting the global request context:
+The following snippet shows an example of setting the request context:
 
 ```ts
-import { getRequestContext, setRequestContext } from 'vsf-lexascms';
+import { useContent } from 'vsf-lexascms';
 
-setRequestContext({
-  audienceAttributes: {
-    age: 25,
-    location: 'GB'
+const { search, content } = useContent();
+
+await search({
+  type: 'collection',
+  contentType: 'blogPost',
+  context: {
+    audienceAttributes: {
+      age: 25,
+      location: 'GB'
+    }
   }
 });
 
-console.log(getRequestContext()); // Logs the current global request context
+console.log(content); // Logs personalised blog posts for the provided request context
 ```
 
 Full Example
