@@ -238,7 +238,7 @@ As suggested in the code snippet above, you can also pass some additional parame
 
 ### Request Context
 
-In the event that you would like to set a request context on your requests to LexasCMS (i.e. for content personalisation), you can provide a request context by passing the `context` property to the `search` function.
+In the event that you would like to set a request context on your requests to LexasCMS (i.e. for content personalisation), you can pass the `context` property to the `search` function.
 
 The following snippet shows an example of setting the request context:
 
