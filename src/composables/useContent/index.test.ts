@@ -3,7 +3,7 @@ import axios from 'axios';
 import base64 from 'base-64';
 import Vue from 'vue';
 
-import { setRequestContext, setup, useContent } from '../../index';
+import { setup, useContent } from '../../index';
 
 describe('useContent', () => {
 
@@ -14,11 +14,6 @@ describe('useContent', () => {
     setup({ spaceId: 'space-id' });
     // Setup Vue
     Vue.use(CompositionApi);
-  });
-
-  afterEach(() => {
-    // Reset global request context
-    setRequestContext(null);
   });
 
   test('search should request a single item', async () => {
@@ -75,39 +70,9 @@ describe('useContent', () => {
     }));
   });
 
-  test('search should use global request context', async () => {
+  test('search should set request context if provided', async () => {
     // Mock Axios call
     axiosGetSpy.mockResolvedValueOnce(true);
-    // Define global request context
-    const globalRequestContext = {
-      audienceAttributes: { location: 'GB' }
-    };
-    // Set global request context
-    setRequestContext(globalRequestContext);
-    // Get search method
-    const { search } = useContent('content-ref-id');
-    // Call search method
-    await search({
-      type: 'collection',
-      contentType: 'content-type'
-    });
-    // Assert
-    expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
-      baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
-      headers: {
-        'Content-Type': 'application/vnd.api+json',
-        'x-lexascms-context': base64.encode(JSON.stringify(globalRequestContext))
-      }
-    }));
-  });
-
-  test('search should prefer provided context over global request context', async () => {
-    // Mock Axios call
-    axiosGetSpy.mockResolvedValueOnce(true);
-    // Set global request context
-    setRequestContext({
-      audienceAttributes: { location: 'GB' }
-    });
     // Get search method
     const { search } = useContent('content-ref-id');
     // Call search method
