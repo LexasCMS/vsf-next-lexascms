@@ -9,7 +9,7 @@ type LexascmsContextSearchParamsItem = {
     include?: string;
     localeCode?: string;
   };
-  context?: LexascmsRequestContext;
+  context?: LexascmsRequestContext | string;
 };
 
 type LexascmsContextSearchParamsCollection = {
@@ -26,7 +26,7 @@ type LexascmsContextSearchParamsCollection = {
     };
     sort?: string;
   }
-  context?: LexascmsRequestContext;
+  context?: LexascmsRequestContext | string;
 };
 
 export type LexascmsContextSearchParams =

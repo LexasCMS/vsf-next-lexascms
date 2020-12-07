@@ -7,13 +7,23 @@ import { setup, useContent } from '../../index';
 
 describe('useContent', () => {
 
-  const axiosGetSpy = jest.spyOn(axios, 'get');
+  let axiosGetSpy: jest.SpyInstance;
+  let base64EncodeSpy: jest.SpyInstance;
 
   beforeAll(() => {
     // Setup vsf-lexascms
     setup({ spaceId: 'space-id' });
     // Setup Vue
     Vue.use(CompositionApi);
+  });
+
+  beforeEach(() => {
+    axiosGetSpy = jest.spyOn(axios, 'get');
+    base64EncodeSpy = jest.spyOn(base64, 'encode');
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   test('search should request a single item', async () => {
@@ -70,7 +80,7 @@ describe('useContent', () => {
     }));
   });
 
-  test('search should set request context if provided', async () => {
+  test('search should encode request context and set x-lexascms-context header', async () => {
     // Mock Axios call
     axiosGetSpy.mockResolvedValueOnce(true);
     // Get search method
@@ -84,11 +94,34 @@ describe('useContent', () => {
       }
     });
     // Assert
+    expect(base64EncodeSpy).toHaveBeenCalled();
     expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
       baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
       headers: {
         'Content-Type': 'application/vnd.api+json',
         'x-lexascms-context': base64.encode(JSON.stringify({ audienceAttributes: { location: 'DE' } }))
+      }
+    }));
+  });
+
+  test('search should set x-lexascms-context header with pre-encoded value', async () => {
+    // Mock Axios call
+    axiosGetSpy.mockResolvedValueOnce(true);
+    // Get search method
+    const { search } = useContent('content-ref-id');
+    // Call search method
+    await search({
+      type: 'collection',
+      contentType: 'content-type',
+      context: 'eyJhdWRpZW5jZUF0dHJpYnV0ZXMiOnsibG9jYXRpb24iOiJERSJ9fQ=='
+    });
+    // Assert
+    expect(base64EncodeSpy).not.toHaveBeenCalled();
+    expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
+      baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
+      headers: {
+        'Content-Type': 'application/vnd.api+json',
+        'x-lexascms-context': 'eyJhdWRpZW5jZUF0dHJpYnV0ZXMiOnsibG9jYXRpb24iOiJERSJ9fQ=='
       }
     }));
   });
