@@ -6,12 +6,13 @@ import * as qs from 'qs';
 
 import { LexascmsContent, LexascmsContextSearchParams } from '../../types/lexascms/index';
 import { getConfig } from '../../index';
+import { config } from 'vue/types/umd';
 
 export const useContent = useContentFactory<LexascmsContent, LexascmsContextSearchParams>({
   
   async search (args: LexascmsContextSearchParams): Promise<LexascmsContent> {
     // Get space ID
-    const { spaceId } = getConfig();
+    const { apiKey, spaceId } = getConfig();
     // Define request path
     let requestPath;
     if (args.type === 'item') {
@@ -28,6 +29,10 @@ export const useContent = useContentFactory<LexascmsContent, LexascmsContextSear
       params: args.params,
       paramsSerializer: /* istanbul ignore next */ (params: any) => qs.stringify(params)
     };
+    // Add LexasCMS auth header if required
+    if (apiKey !== undefined) {
+      requestOptions.headers['Authorization'] = `Bearer ${apiKey}`;
+    }
     // Add LexasCMS Request Context if required
     if (args.context !== undefined) {
       // Get request context

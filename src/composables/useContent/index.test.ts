@@ -80,6 +80,33 @@ describe('useContent', () => {
     }));
   });
 
+  test('search should include Authorization header if provided', async () => {
+    // Mock Axios call
+    axiosGetSpy.mockResolvedValueOnce(true);
+    // Call setup with api key
+    setup({
+      apiKey: 'api-key',
+      spaceId: 'space-id'
+    });
+    // Get search method
+    const { search } = useContent('content-ref-id');
+    // Call search method
+    await search({
+      type: 'collection',
+      contentType: 'content-type'
+    });
+    // Assert
+    expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
+      baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
+      headers: {
+        'Authorization': 'Bearer api-key',
+        'Content-Type': 'application/vnd.api+json'
+      }
+    }));
+    // Revert setup to exclude api key
+    setup({ spaceId: 'space-id' });
+  });
+
   test('search should encode request context and set x-lexascms-context header', async () => {
     // Mock Axios call
     axiosGetSpy.mockResolvedValueOnce(true);
