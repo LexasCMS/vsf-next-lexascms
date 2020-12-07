@@ -1,5 +1,9 @@
 export type LexascmsRequestContext = {
-  audienceAttributes: {
+  audienceAttributes?: {
     [audienceAttribute: string]: string | number | boolean | null;
+  };
+  preview?: {
+    timestamp?: number;
+    includeDraftVariations?: boolean;
   }
 };
