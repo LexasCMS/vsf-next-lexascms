@@ -11,7 +11,7 @@ export const useContent = useContentFactory<LexascmsContent, LexascmsContextSear
   
   async search (args: LexascmsContextSearchParams): Promise<LexascmsContent> {
     // Get space ID
-    const { spaceId } = getConfig();
+    const { apiKey, spaceId } = getConfig();
     // Define request path
     let requestPath;
     if (args.type === 'item') {
@@ -28,11 +28,20 @@ export const useContent = useContentFactory<LexascmsContent, LexascmsContextSear
       params: args.params,
       paramsSerializer: /* istanbul ignore next */ (params: any) => qs.stringify(params)
     };
+    // Add LexasCMS auth header if required
+    if (apiKey !== undefined) {
+      requestOptions.headers['Authorization'] = `Bearer ${apiKey}`;
+    }
     // Add LexasCMS Request Context if required
     if (args.context !== undefined) {
-      requestOptions.headers['x-lexascms-context'] = base64.encode(
-        JSON.stringify(args.context)
-      );
+      // Get request context
+      let requestContext = args.context;
+      // Encode request context if required
+      if (typeof requestContext !== 'string') {
+        requestContext = base64.encode(JSON.stringify(args.context));
+      }
+      // Set request context header
+      requestOptions.headers['x-lexascms-context'] = requestContext;
     }
     // Send request
     const response = await axios.get(requestPath, requestOptions);

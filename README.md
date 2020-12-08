@@ -36,6 +36,7 @@ Table of Contents
   - [Fetching a single item](#fetching-a-single-item)
     - [Supported parameters](#supported-parameters-1)
   - [Request Context](#request-context)
+  - [Supporting Content Previews](#supporting-content-previews)
 - [Full Example](#full-example)
 - [License](#license)
 
@@ -67,7 +68,8 @@ Once you have installed the package, you simply need to import and call the `vsf
 import { setup } from 'vsf-lexascms'
 
 setup({
-  spaceId: 'YOUR_SPACE_ID'
+  spaceId: 'YOUR_SPACE_ID',
+  apiKey: 'YOUR_API_KEY' // Optional, unless using content previews
 })
 ```
 
@@ -99,7 +101,13 @@ export default {
   buildModules: [
     // ...
 
-    [ 'vsf-lexascms/nuxt', { spaceId: 'YOUR_SPACE_ID' } ]
+    [
+      'vsf-lexascms/nuxt',
+      {
+        spaceId: 'YOUR_SPACE_ID',
+        apiKey: 'YOUR_API_KEY' // Optional, unless using content previews
+      }
+    ]
   ]
 
   // ...
@@ -238,7 +246,7 @@ As suggested in the code snippet above, you can also pass some additional parame
 
 ### Request Context
 
-In the event that you would like to set a request context on your requests to LexasCMS (i.e. for content personalisation), you can pass the `context` property to the `search` function.
+In the event that you would like to provide a request context with your requests to LexasCMS (i.e. for content personalisation), you can pass the `context` property to the `search` function.
 
 The following snippet shows an example of setting the request context:
 
@@ -260,6 +268,13 @@ await search({
 
 console.log(content); // Logs personalised blog posts for the provided request context
 ```
+
+### Supporting Content Previews
+
+When making use of LexasCMS's [visual content previews](https://www.lexascms.com/features/content-previews/) feature, LexasCMS will load your website with the `lexascmsRequestContent` query parameter.
+
+The value of this parameter will be a pre-encoded request context, which should be provided directly to all requests to the Content Delivery API.
+
 
 Full Example
 ----------------------------------------------------------------
