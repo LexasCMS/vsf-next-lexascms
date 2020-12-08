@@ -6,7 +6,6 @@ import * as qs from 'qs';
 
 import { LexascmsContent, LexascmsContextSearchParams } from '../../types/lexascms/index';
 import { getConfig } from '../../index';
-import { config } from 'vue/types/umd';
 
 export const useContent = useContentFactory<LexascmsContent, LexascmsContextSearchParams>({
   
