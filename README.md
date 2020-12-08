@@ -273,7 +273,7 @@ console.log(content); // Logs personalised blog posts for the provided request c
 
 When making use of LexasCMS's [visual content previews](https://www.lexascms.com/features/content-previews/) feature, LexasCMS will load your website with the `lexascmsRequestContent` query parameter.
 
-This value of this parameter will be a pre-encoded request context, which should be provided directly to all requests to the Content Delivery API.
+The value of this parameter will be a pre-encoded request context, which should be provided directly to all requests to the Content Delivery API.
 
 
 Full Example
