@@ -1,3 +1,4 @@
+import { RenderContent } from './components/RenderContent';
 import { useContent } from './composables/useContent';
 import { LexascmsSetupConfig } from './types/lexascms';
 
@@ -15,6 +16,7 @@ const setup = (config: LexascmsSetupConfig) => {
 
 export {
   getConfig,
+  RenderContent,
   setup,
   useContent
 };
