@@ -28,8 +28,6 @@ Table of Contents
 ----------------------------------------------------------------
 
 - [Installation](#installation)
-  - [Non-Nuxt Project Installation](#non-nuxt-project-installation)
-  - [Nuxt Project Installation](#nuxt-project-installation)
 - [How to Use](#how-to-use)
   - [Fetching a collection](#fetching-a-collection)
     - [Supported parameters](#supported-parameters)
@@ -44,39 +42,7 @@ Table of Contents
 Installation
 ----------------------------------------------------------------
 
-### Non-Nuxt Project installation
-
-The follow instructions are for installing `vsf-lexascms` within a **Non-Nuxt based** Vue Storefront project.
-
-#### 1. Install the NPM package
-
-Install the `vsf-lexascms` NPM package by running one of the following commands:
-
-```bash
-# Yarn
-yarn add vsf-lexascms
-
-# NPM
-npm install vsf-lexascms
-```
-
-#### 2. Setup module
-
-Once you have installed the package, you simply need to import and call the `vsf-lexascms` modules `setup` method:
-
-```ts
-import { setup } from 'vsf-lexascms'
-
-setup({
-  spaceId: 'YOUR_SPACE_ID',
-  apiKey: 'YOUR_API_KEY' // Optional, unless using content previews
-})
-```
-
-
-### Nuxt Project installation
-
-The follow instructions are for installing `vsf-lexascms` within a **Nuxt based** Vue Storefront project.
+Please follow the below instructions to install `vsf-lexascms` in your **Vue Storefront Next** project.
 
 #### 1. Install the NPM package
 
@@ -151,9 +117,7 @@ export default {
 How To Use
 ----------------------------------------------------------------
 
-Once you have installed the `vsf-lexascms` module, usage is exactly the same between both Nuxt and Non-Nuxt projects.
-
-Content is retrieved using the `useContent` composable.
+Once you have installed the `vsf-lexascms` module, content can be retrieved using the `useContent` composable.
 
 ```ts
 import { useContent } from 'vsf-lexascms';
