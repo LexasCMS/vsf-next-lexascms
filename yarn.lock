@@ -796,20 +796,20 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vue-storefront/core@^2.0.12":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/core/-/core-2.0.12.tgz#5192e2dd51521453511dc80690b9701a6c3c9209"
-  integrity sha512-D3fM6y4mbzmA8LWFSYW6x1Ijjh2B28CuMsIXM2kfYMoaImftgyqWFkffhkeRRb5cnJiejnxyaOnWLsa4wl4FcA==
+"@vue-storefront/core@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/core/-/core-2.2.1.tgz#7be69893a356a774d0c1de9926bdd8979100ea05"
+  integrity sha512-Uo6jsqQndEX9X/JGb4k/+CoO7QwoUrum5efXvREIEXoiDrVjuag4jzPly3k9lSq3zs9mivUkhYJR5lJd0JsFTA==
   dependencies:
-    "@vue/composition-api" "1.0.0-beta.14"
+    "@vue/composition-api" "1.0.0-beta.21"
     express "^4.17.1"
     lodash-es "^4.17.15"
     vue "^2.6.11"
 
-"@vue/composition-api@1.0.0-beta.14":
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.0.0-beta.14.tgz#b243d906ae5dcda7483e0b5a2b5ea1aa971a4e00"
-  integrity sha512-HYBe87RG//qpN/2+ZtgdhrIafdO8bYK/Tu1+/jMS4iNGYJi42XCbPydhEAiaRcTvsEJjZQEfP+hKKIuH+iPICg==
+"@vue/composition-api@1.0.0-beta.21":
+  version "1.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.0.0-beta.21.tgz#d5a3c68afc8b569dfc3eccd69998388bb7f6a16c"
+  integrity sha512-tgbvDpLvKQ1GrII424wsoyzPCsG0oTFf38emMq495SfLY7RmUqhVIl81pvnC5489PPrCxDkbauJHJrhlcXfbTQ==
   dependencies:
     tslib "^2.0.1"
 
@@ -1028,10 +1028,10 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
-axios@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
-  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
     follow-redirects "^1.10.0"
 

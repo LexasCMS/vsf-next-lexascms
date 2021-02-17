@@ -28,8 +28,6 @@ Table of Contents
 ----------------------------------------------------------------
 
 - [Installation](#installation)
-  - [Non-Nuxt Project Installation](#non-nuxt-project-installation)
-  - [Nuxt Project Installation](#nuxt-project-installation)
 - [How to Use](#how-to-use)
   - [Fetching a collection](#fetching-a-collection)
     - [Supported parameters](#supported-parameters)
@@ -44,39 +42,7 @@ Table of Contents
 Installation
 ----------------------------------------------------------------
 
-### Non-Nuxt Project installation
-
-The follow instructions are for installing `vsf-lexascms` within a **Non-Nuxt based** Vue Storefront project.
-
-#### 1. Install the NPM package
-
-Install the `vsf-lexascms` NPM package by running one of the following commands:
-
-```bash
-# Yarn
-yarn add vsf-lexascms
-
-# NPM
-npm install vsf-lexascms
-```
-
-#### 2. Setup module
-
-Once you have installed the package, you simply need to import and call the `vsf-lexascms` modules `setup` method:
-
-```ts
-import { setup } from 'vsf-lexascms'
-
-setup({
-  spaceId: 'YOUR_SPACE_ID',
-  apiKey: 'YOUR_API_KEY' // Optional, unless using content previews
-})
-```
-
-
-### Nuxt Project installation
-
-The follow instructions are for installing `vsf-lexascms` within a **Nuxt based** Vue Storefront project.
+Please follow the below instructions to install `vsf-lexascms` in your **Vue Storefront Next** project.
 
 #### 1. Install the NPM package
 
@@ -151,9 +117,7 @@ export default {
 How To Use
 ----------------------------------------------------------------
 
-Once you have installed the `vsf-lexascms` module, usage is exactly the same between both Nuxt and Non-Nuxt projects.
-
-Content is retrieved using the `useContent` composable.
+Once you have installed the `vsf-lexascms` module, content can be retrieved using the `useContent` composable.
 
 ```ts
 import { useContent } from 'vsf-lexascms';
@@ -170,27 +134,33 @@ const { search, content, loading, error } = useContent();
 
 ### Fetching a collection
 
-The following code snippet shows an example of how you could retrieve a collection of blog posts from LexasCMS.
+The following code snippet shows an example of how you could retrieve a collection of promo banners from LexasCMS.
 
 ```ts
-const { search, content, loading, error } = useContent();
+import { useContent } from 'vsf-lexascms';
 
-await search({
-  type: 'collection',
-  contentType: 'blogPost'
+export default {
+  setup() {
+    const { search, content, loading, error } = useContent();
 
-  // Optionally provide additional params, see supported parameters below
-  // params: {
-  //   
-  // }
-  //
-  // Override the request context for this request, see the 'Request Context' section for more details
-  // context: {
-  //
-  // }
-});
+    await search({
+      type: 'collection',
+      contentType: 'promoBanners'
 
-console.log(content); // This would log the retrieved blog posts
+      // Optionally provide additional params, see supported parameters below
+      // params: {
+      //   
+      // }
+      //
+      // Override the request context for this request, see the 'Request Context' section for more details
+      // context: {
+      //
+      // }
+    });
+
+    return { content, loading, error };
+  }
+};
 ```
 
 #### Supported parameters
@@ -199,38 +169,44 @@ As suggested in the code snippet above, you can also pass some additional parame
 
 | Name        | Type   | Required | Example                               | Comments                                                                                                                                                              |
 |-------------|--------|----------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| fields      | Object | N        | `{ blogPost: 'title,publishedAt' }`   | See [sparse fieldsets documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/sparse-fieldsets/) for more info.                           |
+| fields      | Object | N        | `{ promoBanner: 'title,subtitle' }`   | See [sparse fieldsets documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/sparse-fieldsets/) for more info.                           |
 | filter      | Object | N        | `{ title: { _startsWith: 'Hello' } }` | See [filtering documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/filtering/) for more info.                                         |
-| include     | String | N        | `author,coverImage`                   | See [fetching records documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/fetching-records/#including-related-records) for more info. |
+| include     | String | N        | `backgroundImage`                   | See [fetching records documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/fetching-records/#including-related-records) for more info. |
 | localeCode  | String | N        | `en-GB`                               | See [localisation documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/localisation/) for more info.                                   |
 | page        | Object | N        | `{ limit: 2, skip: 4 }`               | See [pagination documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/pagination/) for more info.                                       |
-| sort        | String | N        | `title,-publishedAt`                  | See [ordering documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/ordering/) for more info.                                           |
+| sort        | String | N        | `title`                  | See [ordering documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/ordering/) for more info.                                           |
 
 
 ### Fetching a single item
 
-The following code snippet shows an example of how you could retrieve an individual blog post from LexasCMS.
+The following code snippet shows an example of how you could retrieve an individual promo banner from LexasCMS.
 
 ```ts
-const { search, content, loading, error } = useContent();
+import { useContent } from 'vsf-lexascms';
 
-await search({
-  type: 'item',
-  contentType: 'blogPost',
-  itemId: 'sample-blog-post-id'
+export default {
+  setup() {
+    const { search, content, loading, error } = useContent();
 
-  // Optionally provide additional params, see supported parameters below
-  // params: {
-  //   
-  // }
-  //
-  // Override the request context for this request, see the 'Request Context' section for more details
-  // context: {
-  //
-  // }
-});
+    await search({
+      type: 'item',
+      contentType: 'promoBanner',
+      itemId: 'example-promo-banner-id'
 
-console.log(content); // This would log the retrieved blog post
+      // Optionally provide additional params, see supported parameters below
+      // params: {
+      //   
+      // }
+      //
+      // Override the request context for this request, see the 'Request Context' section for more details
+      // context: {
+      //
+      // }
+    });
+
+    return { content, loading, error };
+  }
+};
 ```
 
 #### Supported parameters
@@ -239,8 +215,8 @@ As suggested in the code snippet above, you can also pass some additional parame
 
 | Name        | Type   | Required | Example                               | Comments                                                                                                                                                              |
 |-------------|--------|----------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| fields      | Object | N        | `{ blogPost: 'title,publishedAt' }`   | See [sparse fieldsets documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/sparse-fieldsets/) for more info.                           |
-| include     | String | N        | `author,coverImage`                   | See [fetching records documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/fetching-records/#including-related-records) for more info. |
+| fields      | Object | N        | `{ promoBanner: 'title,subtitle' }`   | See [sparse fieldsets documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/sparse-fieldsets/) for more info.                           |
+| include     | String | N        | `backgroundImage`                   | See [fetching records documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/fetching-records/#including-related-records) for more info. |
 | localeCode  | String | N        | `en-GB`                               | See [localisation documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/localisation/) for more info.                                   |
 
 
@@ -253,20 +229,24 @@ The following snippet shows an example of setting the request context:
 ```ts
 import { useContent } from 'vsf-lexascms';
 
-const { search, content } = useContent();
+export default {
+  setup() {
+    const { search, content, loading, error } = useContent();
 
-await search({
-  type: 'collection',
-  contentType: 'blogPost',
-  context: {
-    audienceAttributes: {
-      age: 25,
-      location: 'GB'
-    }
+    await search({
+      type: 'collection',
+      contentType: 'promoBanner',
+      context: {
+        audienceAttributes: {
+          age: 25,
+          location: 'GB'
+        }
+      }
+    });
+
+    return { content, loading, error };
   }
-});
-
-console.log(content); // Logs personalised blog posts for the provided request context
+};
 ```
 
 ### Supporting Content Previews
@@ -275,20 +255,40 @@ When making use of LexasCMS's [visual content previews](https://www.lexascms.com
 
 The value of this parameter will be a pre-encoded request context, which should be provided directly to all requests to the Content Delivery API.
 
+The following snippet shows an example of how this could be achieved:
+
+```ts
+import { useContent } from 'vsf-lexascms';
+
+export default {
+  setup(_, context) {
+    const { search, content, loading, error } = useContent();
+
+    await search({
+      type: 'collection',
+      contentType: 'promoBanner',
+      context: context.root.$route.query.lexascmsRequestContext ?? null
+    });
+
+    return { content, loading, error };
+  }
+};
+```
+
 
 Full Example
 ----------------------------------------------------------------
 
-The below code shows a full example of how you could create a small component which lists the available blog posts:
+The below code shows a full example of how you could create a small component which lists the available promo banners:
 
 ```vue
 <template>
-  <div id="blog-posts">
-    <div v-if="loading">Loading blog posts...</div>
-    <div v-if="error">Error loading blog posts!</div>
+  <div id="promo-banners">
+    <div v-if="loading">Loading promo banners...</div>
+    <div v-if="error">Error loading promo banners!</div>
     <ul>
-      <li v-for="blogPost in content" :key="blogPost.id">
-        {{ blogPost.title }}
+      <li v-for="promoBanner in promoBanners" :key="promoBanner.id">
+        {{ promoBanner.title }}
       </li>
     </ul>
   </div>
@@ -299,22 +299,22 @@ import { useContent } from 'vsf-lexascms';
 import { onSSR } from '@vue-storefront/core';
 
 export default {
-  name: 'BlogPosts',
+  name: 'PromoBanners',
   setup() {
     // useContent
     const { search, content, loading, error } = useContent();
 
-    // Retrieve blog posts on server-side render only
+    // Retrieve promo banners on server-side render only
     onSSR(async () => {
       await search({
         type: 'collection',
-        contentType: 'blogPost'
+        contentType: 'promoBanner'
       });
     });
 
     // Return
     return {
-      content,
+      promoBanners: content,
       loading,
       error
     };

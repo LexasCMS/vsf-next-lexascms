@@ -1,22 +1,32 @@
+import { apiClientFactory, integrationPluginFactory } from '@vue-storefront/core';
+
+import { getContent } from './api';
 import { RenderContent } from './components/RenderContent';
 import { useContent } from './composables/useContent';
 import { LexascmsSetupConfig } from './types/lexascms';
 
-let _config: LexascmsSetupConfig = {
-  spaceId: null
-};
-
-const getConfig = (): LexascmsSetupConfig => {
-  return _config;
-};
-
+// Define setup method
 const setup = (config: LexascmsSetupConfig) => {
-  _config = config;
-};
+  return {
+    config: { ...config }
+  }
+}
+
+// Create API Client
+const { createApiClient } = apiClientFactory({
+  tag: 'lexascms',
+  onSetup: setup as any,
+  api: {
+    getContent,
+  },
+});
+
+// Create integration plugin
+const integrationPlugin = integrationPluginFactory(createApiClient);
 
 export {
-  getConfig,
+  createApiClient,
+  integrationPlugin,
   RenderContent,
-  setup,
   useContent
 };
