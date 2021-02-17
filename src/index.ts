@@ -1,6 +1,7 @@
 import { apiClientFactory, integrationPluginFactory } from '@vue-storefront/core';
 
 import { getContent } from './api';
+import { RenderContent } from './components/RenderContent';
 import { useContent } from './composables/useContent';
 import { LexascmsSetupConfig } from './types/lexascms';
 
@@ -26,5 +27,6 @@ const integrationPlugin = integrationPluginFactory(createApiClient);
 export {
   createApiClient,
   integrationPlugin,
+  RenderContent,
   useContent
 };
