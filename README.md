@@ -36,6 +36,7 @@ Table of Contents
   - [Request Context](#request-context)
   - [Supporting Content Previews](#supporting-content-previews)
 - [Full Example](#full-example)
+- [Tutorials](#tutorials)
 - [License](#license)
 
 
@@ -322,6 +323,16 @@ export default {
 };
 </script>
 ```
+
+
+Tutorials
+----------------------------------------------------------------
+
+Prefer a more guided tutorial? Check out our 3 part tutorial series using the links below:
+
+- [Part 1 - Headless CMS Integration](https://www.lexascms.com/blog/integrating-a-headless-cms-with-vue-storefront-next/)
+- [Part 2 - Personalised Content](https://www.lexascms.com/blog/implementing-personalised-content-with-vue-storefront-next/)
+- [Part 3 - Visual Content Previews](https://www.lexascms.com/blog/visual-content-previews-with-vue-storefront-next/)
 
 
 License
