@@ -68,13 +68,7 @@ export default {
   buildModules: [
     // ...
 
-    [
-      'vsf-lexascms/nuxt',
-      {
-        spaceId: 'YOUR_SPACE_ID',
-        apiKey: 'YOUR_API_KEY' // Optional, unless using content previews
-      }
-    ]
+    ['vsf-lexascms/nuxt']
   ]
 
   // ...
@@ -111,6 +105,26 @@ export default {
   ]
 
   // ...
+};
+```
+
+#### 4. Configure middleware
+
+Open the `middleware.config.js` file in the root of your project and add the following configuration:
+
+```js
+module.exports = {
+  integrations: {
+    // ...
+
+    lexascms: {
+      location: 'vsf-lexascms/server',
+      configuration: {
+        spaceId: 'YOUR_SPACE_ID',
+        apiKey: 'YOUR_API_KEY' // Optional, unless using content previews
+      }
+    }
+  }
 };
 ```
 
