@@ -1,6 +1,6 @@
-import { createApiClient } from './index';
+import { createApiClient } from './index.server';
 
-describe('vsf-lexascms', () => {
+describe('vsf-lexascms/server', () => {
 
   test('should create an api client', async () => {
     // Create API Client

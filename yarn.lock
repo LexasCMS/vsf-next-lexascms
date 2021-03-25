@@ -796,13 +796,15 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vue-storefront/core@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/core/-/core-2.2.1.tgz#7be69893a356a774d0c1de9926bdd8979100ea05"
-  integrity sha512-Uo6jsqQndEX9X/JGb4k/+CoO7QwoUrum5efXvREIEXoiDrVjuag4jzPly3k9lSq3zs9mivUkhYJR5lJd0JsFTA==
+"@vue-storefront/core@^2.3.0-rc.1":
+  version "2.3.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/core/-/core-2.3.0-rc.2.tgz#18215093f382e2f5bd0e44d36bfd24c4c0a5bf0c"
+  integrity sha512-fDOQ0VDfHXVrw2E/tqG5TjnS+tfL5LsVNdFC59dHPcrji3uUUCb00JK6OJccwYFKqhzxv7D+KAj08KbBZrIQQQ==
   dependencies:
     "@vue/composition-api" "1.0.0-beta.21"
+    axios "0.21.1"
     express "^4.17.1"
+    is-https "^3.0.2"
     lodash-es "^4.17.15"
     vue "^2.6.11"
 
@@ -1028,7 +1030,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
-axios@^0.21.1:
+axios@0.21.1, axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -2896,6 +2898,11 @@ is-hexadecimal@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/is-hexadecimal/-/is-hexadecimal-1.0.4.tgz#cc35c97588da4bd49a8eedd6bc4082d44dcb23a7"
   integrity sha512-gyPJuv83bHMpocVYoqof5VDiZveEoGoFL8m3BXNb2VW8Xs+rz9kqO8LOQ5DH6EsuvilT1ApazU0pyl+ytbPtlw==
+
+is-https@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/is-https/-/is-https-3.0.2.tgz#4d24e002e47edd3f1b07f14bc722433354ccba49"
+  integrity sha512-jFgAKhbNF7J+lTMJxbq5z9bf1V9f8rXn9mP5RSY2GUEW5M0nOiVhVC9dNra96hQDjGpNzskIzusUnXwngqmhAA==
 
 is-installed-globally@^0.3.1:
   version "0.3.2"
