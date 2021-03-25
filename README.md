@@ -75,40 +75,7 @@ export default {
 };
 ```
 
-#### 3. Configure @vue-storefront/nuxt
-
-Still within your projects `nuxt.config.js` file, add `vsf-lexascms` to the `useRawSource` config for the `@vue-storefront/nuxt` module:
-
-```js
-export default {
-  // ...
-
-  buildModules: [
-    [ '@vue-storefront/nuxt', {
-      // ...
-
-      useRawSource: {
-        dev: [
-          // ...
-
-          'vsf-lexascms'
-        ],
-        prod: [
-          // ...
-
-          'vsf-lexascms'
-        ]
-      }
-
-      // ...
-    } ]
-  ]
-
-  // ...
-};
-```
-
-#### 4. Configure middleware
+#### 3. Configure middleware
 
 Open the `middleware.config.js` file in the root of your project and add the following configuration:
 
