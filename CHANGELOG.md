@@ -1,3 +1,14 @@
+## 0.4.0 (2021-03-25)
+
+#### :boom: Breaking Change
+* [#13](https://github.com/LexasCMS/vsf-next-lexascms/pull/13) Update implementation to use VSF Server Middleware ([@mike183](https://github.com/mike183))
+
+#### :rocket: Enhancement
+* [#14](https://github.com/LexasCMS/vsf-next-lexascms/pull/14) Automatically configure module to be transpiled ([@mike183](https://github.com/mike183))
+
+#### Committers: 1
+- Michael Donaldson ([@mike183](https://github.com/mike183))
+
 ## 0.3.0 (2021-02-12)
 
 #### :boom: Breaking Change
