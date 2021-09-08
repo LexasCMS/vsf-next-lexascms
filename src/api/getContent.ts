@@ -1,3 +1,4 @@
+import { Logger } from '@vue-storefront/core';
 import axios, { AxiosRequestConfig } from 'axios';
 import base64 from 'base-64';
 import Jsona from 'jsona';
@@ -9,7 +10,7 @@ import {
   LexascmsContextSearchParams
 } from '../types/lexascms';
 
-export const getContent = async (context: LexascmsApiContext, args: LexascmsContextSearchParams): Promise<LexascmsContent> => {
+export const getContent = async (context: LexascmsApiContext, args: LexascmsContextSearchParams): Promise<LexascmsContent | null> => {
   // Get config
   const { apiKey, spaceId } = context.config;
   // Define request path
@@ -44,10 +45,19 @@ export const getContent = async (context: LexascmsApiContext, args: LexascmsCont
     requestOptions.headers['x-lexascms-context'] = requestContext;
   }
   // Send request
-  const response = await axios.get(requestPath, requestOptions);
-  // Deserialize JSON:API response
-  const dataFormatter = new Jsona();
-  const data = dataFormatter.deserialize(response.data) as LexascmsContent;
+  let data = null;
+  try {
+    // Send request
+    const response = await axios.get(requestPath, requestOptions);
+    // Deserialize JSON:API response
+    const dataFormatter = new Jsona();
+    data = dataFormatter.deserialize(response.data) as LexascmsContent;
+  } catch (error) {
+    Logger.error(
+      'Failed to load content from LexasCMS',
+      JSON.stringify(error.response.data, null, 2)
+    );
+  }
   // Return
   return data;
 };
