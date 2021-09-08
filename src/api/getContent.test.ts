@@ -1,3 +1,4 @@
+import { Logger } from '@vue-storefront/core';
 import axios from 'axios';
 import base64 from 'base-64';
 
@@ -130,6 +131,24 @@ describe('useContent', () => {
         'x-lexascms-context': 'eyJhdWRpZW5jZUF0dHJpYnV0ZXMiOnsibG9jYXRpb24iOiJERSJ9fQ=='
       }
     }));
+  });
+
+  test('search should log error if request fails', async () => {
+    // Mock Axios call
+    axiosGetSpy.mockRejectedValueOnce({
+      response: {
+        data: 'test error'
+      }
+    });
+    // Mock Logger call
+    const errorLogSpy = jest.spyOn(Logger, 'error').mockImplementationOnce(() => true);
+    // Call function
+    const content = await getContent(context, {
+      type: 'collection',
+      contentType: 'content-type'
+    });
+    // Assert
+    expect(errorLogSpy).toHaveBeenCalledWith('Failed to load content from LexasCMS', '"test error"');
   });
 
   test('search should return deserialised JSON:API response', async () => {
