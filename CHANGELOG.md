@@ -1,3 +1,11 @@
+## 0.4.1 (2021-09-08)
+
+#### :bug: Bug Fix
+* [#23](https://github.com/LexasCMS/vsf-next-lexascms/pull/23) Resolve issue with error handling in new versions of VSF ([@mike183](https://github.com/mike183))
+
+#### Committers: 1
+- Michael Donaldson ([@mike183](https://github.com/mike183))
+
 ## 0.4.0 (2021-03-25)
 
 #### :boom: Breaking Change
