@@ -193,13 +193,14 @@ export default {
 
 #### Supported parameters
 
-As suggested in the code snippet above, you can also pass some additional parameters for making your queries more specific (e.g. localisation).
+As suggested in the code snippet above, you can also pass some additional parameters for making your queries more specific (e.g. localisation, pagination etc.).
 
-| Name        | Type   | Required | Example                               | Comments                                                                                                                                                              |
-|-------------|--------|----------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| fields      | Object | N        | `{ promoBanner: 'title,subtitle' }`   | See [sparse fieldsets documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/sparse-fieldsets/) for more info.                           |
-| include     | String | N        | `backgroundImage`                   | See [fetching records documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/fetching-records/#including-related-records) for more info. |
-| localeCode  | String | N        | `en-GB`                               | See [localisation documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/localisation/) for more info.                                   |
+| Name        | Type   | Required | Example                                        | Comments                                                                                                                                                              |
+|-------------|--------|----------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| fields      | Object | N        | `{ promoBanner: 'title,subtitle' }`            | See [sparse fieldsets documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/sparse-fieldsets/) for more info.                           |
+| include     | String | N        | `backgroundImage`                              | See [fetching records documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/fetching-records/#including-related-records) for more info. |
+| localeCode  | String | N        | `en-GB`                                        | See [localisation documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/localisation/) for more info.                                   |
+| page        | Object | N        | `{ relationshipField: { limit: 2, skip: 4 } }` | See [pagination documentation](https://www.lexascms.com/docs/api-reference/content-delivery/jsonapi/pagination/) for more info.                                       |
 
 
 ### Request Context
