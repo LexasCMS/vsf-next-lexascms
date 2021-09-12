@@ -1,6 +1,6 @@
 {
   "name": "vsf-lexascms",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Official LexasCMS module for Vue Storefront (Next).",
   "keywords": [
     "vue-storefront",

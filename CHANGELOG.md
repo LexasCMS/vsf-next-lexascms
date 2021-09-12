@@ -1,3 +1,11 @@
+## 0.4.2 (2021-09-12)
+
+#### :rocket: Enhancement
+* [#24](https://github.com/LexasCMS/vsf-next-lexascms/pull/24) Add support for `page` parameter when fetching singular content items ([@mike183](https://github.com/mike183))
+
+#### Committers: 1
+- Michael Donaldson ([@mike183](https://github.com/mike183))
+
 ## 0.4.1 (2021-09-08)
 
 #### :bug: Bug Fix
