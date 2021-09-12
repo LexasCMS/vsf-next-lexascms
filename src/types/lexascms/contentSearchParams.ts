@@ -1,5 +1,14 @@
 import { LexascmsRequestContext } from './requestContext';
 
+type LexascmsPageParamLimitSkip = {
+  limit?: number;
+  skip?: number;
+};
+
+type LexascmsPageParamGeneric = {
+  [key: string]: LexascmsPageParamLimitSkip | LexascmsPageParamGeneric;
+};
+
 type LexascmsContextSearchParamsItem = {
   type: 'item';
   contentType: string;
@@ -8,6 +17,7 @@ type LexascmsContextSearchParamsItem = {
     fields?: { [contentType: string]: string };
     include?: string;
     localeCode?: string;
+    page?: LexascmsPageParamGeneric;
   };
   context?: LexascmsRequestContext | string;
 };
@@ -20,10 +30,7 @@ type LexascmsContextSearchParamsCollection = {
     filter?: { [prop: string]: any };
     include?: string;
     localeCode?: string;
-    page?: {
-      limit?: number;
-      skip?: number;
-    };
+    page?: LexascmsPageParamLimitSkip | LexascmsPageParamGeneric;
     sort?: string;
   }
   context?: LexascmsRequestContext | string;
