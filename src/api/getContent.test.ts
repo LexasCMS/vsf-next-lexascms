@@ -65,6 +65,7 @@ describe('useContent', () => {
     expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
       baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
       headers: {
+        'Accept-Encoding': 'gzip',
         'Content-Type': 'application/vnd.api+json'
       },
       params: {
@@ -85,6 +86,7 @@ describe('useContent', () => {
     expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
       baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
       headers: {
+        'Accept-Encoding': 'gzip',
         'Authorization': 'Bearer api-key',
         'Content-Type': 'application/vnd.api+json'
       }
@@ -107,6 +109,7 @@ describe('useContent', () => {
     expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
       baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
       headers: {
+        'Accept-Encoding': 'gzip',
         'Content-Type': 'application/vnd.api+json',
         'x-lexascms-context': base64.encode(JSON.stringify({ audienceAttributes: { location: 'DE' } }))
       }
@@ -127,6 +130,7 @@ describe('useContent', () => {
     expect(axiosGetSpy).toHaveBeenCalledWith('/content-type', expect.objectContaining({
       baseURL: `https://space-id.spaces.lexascms.com/delivery/jsonapi`,
       headers: {
+        'Accept-Encoding': 'gzip',
         'Content-Type': 'application/vnd.api+json',
         'x-lexascms-context': 'eyJhdWRpZW5jZUF0dHJpYnV0ZXMiOnsibG9jYXRpb24iOiJERSJ9fQ=='
       }
