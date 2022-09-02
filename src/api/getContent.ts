@@ -24,6 +24,7 @@ export const getContent = async (context: LexascmsApiContext, args: LexascmsCont
   const requestOptions: AxiosRequestConfig = {
     baseURL: `https://${spaceId}.spaces.lexascms.com/delivery/jsonapi`,
     headers: {
+      'Accept-Encoding': 'gzip',
       'Content-Type': 'application/vnd.api+json'
     },
     params: args.params,
